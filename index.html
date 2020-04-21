@@ -27,16 +27,23 @@
           <button class="mdc-button mdc-card__action mdc-card__action--button">  <span class="mdc-button__ripple"></span> Read</button>
           <button class="mdc-button mdc-card__action mdc-card__action--button">  <span class="mdc-button__ripple"></span> Bookmark</button>
         </div>
-        <div class="mdc-card__action-icons">
-          <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">
-            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
-            <i class="material-icons mdc-icon-button__icon">favorite_border</i>
-          </button>
-          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true">share</button>
-          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
+        
+          <div class="mdc-card__actions">
+  <button class="mdc-icon-button mdc-card__action mdc-card__action--icon"
+     aria-pressed="false"
+     aria-label="Add to favorites"
+     title="Add to favorites">
+   <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+   <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+  </button>
+  <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Share">share</button>
+  <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert
+              <i class="material-icons mdc-icon-button__icon">person</i>
+              </button>
+</div>
         </div>
       </div>
-    </div>
+    
     
     <script>
         const apiEndpoint = "https://randomuser.me/api/";
@@ -50,8 +57,10 @@
                 let clone = document.querySelector(".template").cloneNode(true);
                 clone.classList.remove("template");
                 clone.querySelector("h2").textContent = person["nat"] + ", " + person["id"]["name"];
+                clone.querySelector("h3").textContent = person["name"]["last"] + ", " + person["name"]["first"];
+                //clone.querySelector("div.demo-card__primary .demo-card__secondary mdc-typography mdc-typography--body2").textContent = person["email"] + "\n" + person["dob"]["date"];
                 //clone.querySelector("div.mdc-card__media mdc-card__media--16-9 demo-card__media").style.backgroundImage = person["picture"]["large"];
-                
+                document.body.appendChild(clone);
             }
                 
         })
